@@ -46,7 +46,9 @@ class TestContentPackageGenerator:
 
             content = Path(files["script"]).read_text(encoding="utf-8")
             assert "# Script Outline" in content
-            assert "Draft a script" in content
+            assert "Mock AI response" in content
+            assert "Hook" in content
+            assert "Call To Action" in content
 
     def test_generate_seo_json(self) -> None:
         pipeline = ContentPipeline()

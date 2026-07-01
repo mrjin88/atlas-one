@@ -21,5 +21,8 @@ def test_pipeline_returns_structured_plan() -> None:
     assert "forgotten cities" in result.research[0]
     assert "Historical Context" in result.research[0]
     assert "Key Facts" in result.research[0]
-    assert result.script[0] == "Draft a script for the idea: A short documentary about forgotten cities"
+    assert result.script[0]
+    assert "forgotten cities" in result.script[0]
+    assert "Hook" in result.script[0]
+    assert "Call To Action" in result.script[0]
     assert result.image_prompts[0] == "Create image prompts for: A short documentary about forgotten cities"
