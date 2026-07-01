@@ -5,8 +5,26 @@ from typing import List
 from .base import Provider
 
 
+_CHECKLIST = [
+    "Review and approve final script",
+    "Render or export all media assets",
+    "Generate thumbnails",
+    "Write platform-specific descriptions",
+    "Schedule publish date and time",
+    "Verify all links and references",
+    "Confirm brand guidelines are met",
+    "Prepare analytics tracking links",
+    "Post to all target channels",
+    "Monitor initial engagement",
+]
+
+
 class PublishProvider(Provider):
-    """Provides placeholder publishing checklist output for an idea."""
+    """Deterministic publishing checklist provider.
+
+    Returns a fixed checklist of publishing tasks.
+    No AI required.
+    """
 
     def generate(self, idea: str) -> List[str]:
-        return [f"Prepare publishing checklist for: {idea}"]
+        return _CHECKLIST[:]
