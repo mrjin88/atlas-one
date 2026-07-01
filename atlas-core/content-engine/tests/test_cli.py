@@ -1,5 +1,6 @@
 import sys
 import json
+import tempfile
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -22,6 +23,11 @@ class TestCLI:
             assert False, "Expected SystemExit"
         except SystemExit:
             pass
+
+    def test_parser_accepts_optional_output(self) -> None:
+        parser = build_parser()
+        args = parser.parse_args(["--idea", "Test", "--output", "out/"])
+        assert args.output == "out/"
 
     def test_main_returns_zero_and_valid_json(self) -> None:
         exit_code = main(["--idea", "Roman concrete"])
@@ -46,3 +52,10 @@ class TestCLI:
         assert isinstance(data["video_prompts"], list)
         assert isinstance(data["seo"], list)
         assert isinstance(data["publish_checklist"], list)
+
+    def test_main_with_output_flag_creates_files(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            exit_code = main(["--idea", "Roman concrete", "--output", tmpdir])
+            assert exit_code == 0
+            files = list(Path(tmpdir).iterdir())
+            assert len(files) == 6
