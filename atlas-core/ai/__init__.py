@@ -6,8 +6,8 @@ try:
     from .mock import MockProvider
     from .providers.openai_provider import (
         MissingAPIKeyError,
-        OpenAIAPIError,
         OpenAIProvider,
+        OpenAIProviderError,
     )
 except ImportError:
     from base import AIProvider
@@ -15,8 +15,8 @@ except ImportError:
     from mock import MockProvider
     from providers.openai_provider import (  # type:ignore[no-redef]
         MissingAPIKeyError,
-        OpenAIAPIError,
         OpenAIProvider,
+        OpenAIProviderError,
     )
 
 
@@ -26,7 +26,7 @@ __all__ = [
     "MockProvider",
     "OpenAIProvider",
     "MissingAPIKeyError",
-    "OpenAIAPIError",
+    "OpenAIProviderError",
 ]
 
 

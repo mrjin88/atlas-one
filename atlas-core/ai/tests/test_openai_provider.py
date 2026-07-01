@@ -7,12 +7,17 @@ import sys
 from pathlib import Path
 from unittest.mock import MagicMock, patch
 
+import httpx
 import pytest
-from openai import APIError as OpenAIAPIError
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-import ai.providers.openai_provider as op  # noqa: E402
+from ai.providers.openai_provider import (  # noqa: E402
+    MissingAPIKeyError,
+    OpenAIProvider,
+    OpenAIProviderError,
+)
+from openai import APIError as OpenAIAPIError  # noqa: E402
 
 
 class MockChoice:
@@ -30,15 +35,15 @@ class TestOpenAIProvider:
 
     def test_missing_api_key_raises_error(self) -> None:
         with patch.dict(os.environ, {}, clear=True):
-            with pytest.raises(op.MissingAPIKeyError):
-                op.OpenAIProvider(model="gpt-4o-mini")
+            with pytest.raises(MissingAPIKeyError):
+                OpenAIProvider(model="gpt-4o-mini")
 
     def test_generate_returns_content(self) -> None:
         mock_client = MagicMock()
         mock_client.chat.completions.create.return_value = MockResponse(
-            "Hello from OpenAI!"
+            "Hello from OpenAI!",
         )
-        provider = op.OpenAIProvider(
+        provider = OpenAIProvider(
             model="gpt-4o-mini",
             client=mock_client,
         )
@@ -48,7 +53,7 @@ class TestOpenAIProvider:
     def test_generate_sends_correct_messages(self) -> None:
         mock_client = MagicMock()
         mock_client.chat.completions.create.return_value = MockResponse("")
-        provider = op.OpenAIProvider(
+        provider = OpenAIProvider(
             model="gpt-4o-mini",
             client=mock_client,
         )
@@ -56,13 +61,13 @@ class TestOpenAIProvider:
         mock_client.chat.completions.create.assert_called_once()
         _, kwargs = mock_client.chat.completions.create.call_args
         assert kwargs["messages"] == [
-            {"role": "user", "content": "What is AI?"}
+            {"role": "user", "content": "What is AI?"},
         ]
 
     def test_generate_uses_configured_model(self) -> None:
         mock_client = MagicMock()
         mock_client.chat.completions.create.return_value = MockResponse("")
-        provider = op.OpenAIProvider(
+        provider = OpenAIProvider(
             model="gpt-4o-mini",
             temperature=0.5,
             max_tokens=512,
@@ -74,17 +79,15 @@ class TestOpenAIProvider:
         assert kwargs["temperature"] == 0.5
         assert kwargs["max_tokens"] == 512
 
-    def test_generate_raises_openai_api_error(self) -> None:
+    def test_generate_raises_provider_error(self) -> None:
         mock_client = MagicMock()
-        import httpx
-
         mock_client.chat.completions.create.side_effect = OpenAIAPIError(
             message="API failure",
             request=httpx.Request("POST", "https://api.openai.com"),
             body=None,
         )
-        with pytest.raises(op.OpenAIAPIError):
-            provider = op.OpenAIProvider(
+        with pytest.raises(OpenAIProviderError):
+            provider = OpenAIProvider(
                 model="gpt-4o-mini",
                 client=mock_client,
             )

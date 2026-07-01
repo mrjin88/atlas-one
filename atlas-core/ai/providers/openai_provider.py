@@ -14,6 +14,10 @@ class MissingAPIKeyError(Exception):
     """Raised when the OPENAI_API_KEY environment variable is not set."""
 
 
+class OpenAIProviderError(Exception):
+    """Raised when the OpenAI API returns an error."""
+
+
 class OpenAIProvider(AIProvider):
     """AI provider backed by the OpenAI API.
 
@@ -52,14 +56,10 @@ class OpenAIProvider(AIProvider):
                 max_tokens=self._max_tokens,
             )
         except APIError as exc:
-            raise OpenAIAPIError(
+            raise OpenAIProviderError(
                 f"OpenAI API error: {exc}"
             ) from exc
 
         choice = response.choices[0]
         content = choice.message.content
         return content or ""
-
-
-class OpenAIAPIError(Exception):
-    """Raised when the OpenAI API returns an error."""
