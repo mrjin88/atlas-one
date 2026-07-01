@@ -6,7 +6,10 @@ import json
 from pathlib import Path
 from typing import Dict, List
 
-from pipeline import PipelineResult
+try:
+    from .pipeline import PipelineResult
+except ImportError:
+    from pipeline import PipelineResult
 
 
 def _write_markdown(path: Path, title: str, items: List[str]) -> None:

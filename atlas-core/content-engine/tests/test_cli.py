@@ -44,7 +44,9 @@ class TestCLI:
     def test_output_is_valid_json(self, capsys) -> None:
         main(["--idea", "Lost civilizations"])
         captured = capsys.readouterr()
-        data = json.loads(captured.out)
+        # Output is JSON followed by a blank line and a summary
+        json_part = captured.out.split("\n\n")[0]
+        data = json.loads(json_part)
         assert data["idea"] == "Lost civilizations"
         assert isinstance(data["research"], list)
         assert isinstance(data["script"], list)

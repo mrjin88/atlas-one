@@ -1,7 +1,7 @@
 """Command-line interface for the Content Engine.
 
 Usage:
-    python cli.py --idea "Your idea here"
+    python cli.py --idea "Roman concrete"
     python cli.py --idea "Roman concrete" --output projects/lost-archive/content/LA-0001
 """
 
@@ -20,6 +20,9 @@ except ImportError:
     from pipeline import ContentPipeline
 
 
+_DEFAULT_OUTPUT = "projects/lost-archive/content/LA-0001"
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description="Atlas ONE Content Engine — transform an idea into "
@@ -35,7 +38,8 @@ def build_parser() -> argparse.ArgumentParser:
         "--output",
         type=str,
         default=None,
-        help="Optional output directory for generated content files.",
+        help="Output directory for generated files "
+             f"(default: {_DEFAULT_OUTPUT}).",
     )
     return parser
 
@@ -52,17 +56,18 @@ def main(argv: list[str] | None = None) -> int:
     pipeline = ContentPipeline()
     plan = pipeline.run(idea)
 
-    output_path = args.output
+    output_path = args.output or _DEFAULT_OUTPUT
+    generator = ContentPackageGenerator(output_path)
+    files = generator.generate(plan)
 
-    if output_path:
-        generator = ContentPackageGenerator(output_path)
-        files = generator.generate(plan)
-        print(f"Generated {len(files)} files in: {Path(output_path).resolve()}")
-        for section, filepath in sorted(files.items()):
-            print(f"  {section}: {filepath}")
-    else:
-        out = json.dumps(pipeline.to_dict(plan), indent=2, ensure_ascii=False)
-        print(out)
+    # Print structured JSON
+    print(json.dumps(pipeline.to_dict(plan), indent=2, ensure_ascii=False))
+
+    # Print generation summary
+    resolved = Path(output_path).resolve()
+    print(f"\nGenerated {len(files)} files in: {resolved}")
+    for section, filepath in sorted(files.items()):
+        print(f"  {section}: {filepath}")
 
     return 0
 
