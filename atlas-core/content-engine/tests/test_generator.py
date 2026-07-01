@@ -34,7 +34,7 @@ class TestContentPackageGenerator:
 
             content = Path(files["research"]).read_text(encoding="utf-8")
             assert "# Research Notes" in content
-            assert "Roman concrete" in content
+            assert "Mock AI response" in content
 
     def test_generate_script_md(self) -> None:
         pipeline = ContentPipeline()

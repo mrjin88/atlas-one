@@ -13,6 +13,12 @@ except ImportError:
 
 
 def _write_markdown(path: Path, title: str, items: List[str]) -> None:
+    # If the single item is raw markdown (starts with a header), write it
+    # directly instead of wrapping in a list.
+    if len(items) == 1 and items[0].strip().startswith("#"):
+        path.write_text(items[0].strip() + "\n", encoding="utf-8")
+        return
+
     lines = [f"# {title}", ""]
     for item in items:
         lines.append(f"- {item}")
