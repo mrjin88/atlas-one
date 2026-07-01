@@ -16,7 +16,10 @@ from ai.base import AIProvider
 from ai.mock import MockProvider
 from ai.providers.openai_provider import OpenAIProvider
 
-from prompt_loader import PromptLoader
+try:
+    from ..prompt_loader import PromptLoader
+except ImportError:
+    from prompt_loader import PromptLoader
 
 
 class ScriptProvider(Provider):

@@ -48,6 +48,10 @@ class TestContentPackageGenerator:
             assert "# Script Outline" in content
             assert "Mock AI response" in content
             assert "Hook" in content
+            assert "Introduction" in content
+            assert "Story" in content
+            assert "Interesting Facts" in content
+            assert "Closing" in content
             assert "Call To Action" in content
 
     def test_generate_seo_json(self) -> None:
