@@ -9,3 +9,8 @@ Thumbs.db
 # Environment files
 .env
 *.local
+
+# Python cache files
+__pycache__/
+*.pyc
+.pytest_cache/
