@@ -10,7 +10,10 @@ import argparse
 import json
 import sys
 
-from pipeline import ContentPipeline
+try:
+    from .pipeline import ContentPipeline
+except ImportError:
+    from pipeline import ContentPipeline
 
 
 def build_parser() -> argparse.ArgumentParser:
