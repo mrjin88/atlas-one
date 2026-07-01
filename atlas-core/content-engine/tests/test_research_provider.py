@@ -9,8 +9,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from generator import ContentPackageGenerator
 from pipeline import ContentPipeline
+from prompt_loader import PromptLoader
 
-from providers.research import ResearchProvider, _RESEARCH_PROMPT_TEMPLATE
+from providers.research import ResearchProvider
 
 
 class TestResearchProvider:

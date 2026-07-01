@@ -16,24 +16,7 @@ from ai.base import AIProvider
 from ai.mock import MockProvider
 from ai.providers.openai_provider import OpenAIProvider
 
-
-_RESEARCH_PROMPT_TEMPLATE = """You are a research assistant. Research the following topic and generate a structured markdown document.
-
-Topic: {idea}
-
-Include the following sections in your response:
-
-# Historical Context
-
-# Key Facts
-
-# Timeline
-
-# Interesting Details
-
-# Sources to Verify
-
-Use markdown formatting throughout."""
+from prompt_loader import PromptLoader
 
 
 class ResearchProvider(Provider):
@@ -44,8 +27,13 @@ class ResearchProvider(Provider):
     OPENAI_API_KEY is set.
     """
 
-    def __init__(self, ai_provider: AIProvider | None = None) -> None:
+    def __init__(
+        self,
+        ai_provider: AIProvider | None = None,
+        prompt_loader: PromptLoader | None = None,
+    ) -> None:
         self._ai = ai_provider or self._default_ai()
+        self._loader = prompt_loader or PromptLoader()
 
     @staticmethod
     def _default_ai() -> AIProvider:
@@ -54,6 +42,6 @@ class ResearchProvider(Provider):
         return MockProvider()
 
     def generate(self, idea: str) -> List[str]:
-        prompt = _RESEARCH_PROMPT_TEMPLATE.format(idea=idea)
+        prompt = self._loader.load("research", idea=idea)
         content = self._ai.generate(prompt)
         return [content]
