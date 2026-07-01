@@ -1,3 +1,20 @@
 # Image Prompts
 
-- Create image prompts for: Roman concrete
+- [Mock AI response for: You are a visual prompt engineer. Generate image generation prompts for the following topic.
+
+Topic: Lost civilizations
+
+Include the following sections in your response:
+
+# Thumbnail Concept
+
+# Key Visual Elements
+
+# Color Palette Suggestions
+
+# Composition Notes
+
+# Reference Style
+
+Use markdown formatting throughout.
+]

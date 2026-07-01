@@ -1,3 +1,20 @@
 # Research Notes
 
-- Research the concept behind: Roman concrete
+- [Mock AI response for: You are a research assistant. Research the following topic and generate a structured markdown document.
+
+Topic: Lost civilizations
+
+Include the following sections in your response:
+
+# Historical Context
+
+# Key Facts
+
+# Timeline
+
+# Interesting Details
+
+# Sources to Verify
+
+Use markdown formatting throughout.
+]
