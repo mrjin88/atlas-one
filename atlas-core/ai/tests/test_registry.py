@@ -3,6 +3,8 @@
 import sys
 from pathlib import Path
 
+import pytest
+
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
 from ai.registry import AIProviderRegistry
@@ -20,19 +22,13 @@ class TestAIProviderRegistry:
     def test_register_duplicate_raises(self) -> None:
         registry = AIProviderRegistry()
         registry.register("mock", MockProvider)
-        try:
+        with pytest.raises(ValueError):
             registry.register("mock", MockProvider)
-            assert False, "Expected ValueError"
-        except ValueError:
-            pass
 
     def test_get_nonexistent_raises(self) -> None:
         registry = AIProviderRegistry()
-        try:
+        with pytest.raises(KeyError):
             registry.get("nonexistent")
-            assert False, "Expected KeyError"
-        except KeyError:
-            pass
 
     def test_list_returns_sorted_names(self) -> None:
         registry = AIProviderRegistry()
