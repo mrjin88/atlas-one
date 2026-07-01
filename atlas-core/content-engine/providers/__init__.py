@@ -1,6 +1,7 @@
 """Provider implementations for the content engine."""
 
 from .base import Provider
+from .registry import ProviderRegistry
 from .research import ResearchProvider
 from .script import ScriptProvider
 from .image_prompt import ImagePromptProvider
@@ -10,6 +11,7 @@ from .publish import PublishProvider
 
 __all__ = [
     "Provider",
+    "ProviderRegistry",
     "ResearchProvider",
     "ScriptProvider",
     "ImagePromptProvider",
