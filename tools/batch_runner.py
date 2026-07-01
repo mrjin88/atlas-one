@@ -11,11 +11,12 @@ import argparse
 import csv
 import json
 import re
+import subprocess
 import sys
 import time
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
-from typing import Dict, List, Tuple
+from typing import Dict, List
 
 import yaml
 
@@ -28,6 +29,9 @@ for _p in [_core, _engine]:
 
 from pipeline import ContentPipeline  # noqa: E402
 from generator import ContentPackageGenerator  # noqa: E402
+
+
+_PROMPT_VERSION = "1.0.0"
 
 
 def slugify(text: str) -> str:
@@ -49,10 +53,22 @@ def load_topics(path: str | Path) -> List[str]:
     return topics
 
 
+def get_git_commit() -> str:
+    """Return the current short Git commit hash, or 'unknown'."""
+    try:
+        result = subprocess.run(
+            ["git", "rev-parse", "--short", "HEAD"],
+            capture_output=True, text=True, cwd=Path(__file__).resolve().parent.parent,
+        )
+        return result.stdout.strip() or "unknown"
+    except Exception:
+        return "unknown"
+
+
 def run_batch(
     topics: List[str],
     output_base: Path,
-) -> List[Dict[str, str | int]]:
+) -> tuple[List[Dict[str, str | int]], int]:
     """Run the content pipeline for each topic and return evaluation records."""
     pipeline = ContentPipeline()
     records: List[Dict[str, str | int]] = []
@@ -66,46 +82,31 @@ def run_batch(
         try:
             plan = pipeline.run(topic)
             generator = ContentPackageGenerator(out_dir)
-            files = generator.generate(plan)
-
-            research_score = 1 if files.get("research") else 0
-            script_score = 1 if files.get("script") else 0
-            image_score = 1 if files.get("image_prompts") else 0
-            video_score = 1 if files.get("video_prompts") else 0
-            seo_score = 1 if files.get("seo") else 0
-
-            overall = research_score + script_score + image_score + video_score + seo_score
+            generator.generate(plan)
             notes = ""
-
-            print(f"  -> {len(files)} files generated in {out_dir}")
+            print(f"  -> Files generated in {out_dir}")
         except Exception as exc:
             print(f"  -> FAILED: {exc}")
-            research_score = 0
-            script_score = 0
-            image_score = 0
-            video_score = 0
-            seo_score = 0
-            overall = 0
             notes = str(exc)
             failed += 1
 
         records.append({
             "Topic": topic,
-            "Research Score": research_score,
-            "Script Score": script_score,
-            "Image Score": image_score,
-            "Video Score": video_score,
-            "SEO Score": seo_score,
-            "Overall Score": overall,
+            "Research Score": "",
+            "Script Score": "",
+            "Image Score": "",
+            "Video Score": "",
+            "SEO Score": "",
+            "Overall Score": "",
             "Reviewer Notes": notes,
         })
 
     print(f"\nBatch complete. {len(topics) - failed}/{len(topics)} succeeded.")
-    return records
+    return records, failed
 
 
 def write_csv(records: List[Dict[str, str | int]], path: Path) -> None:
-    """Write evaluation records to a CSV file."""
+    """Write evaluation CSV with headers and topic rows only."""
     fieldnames = [
         "Topic",
         "Research Score",
@@ -151,9 +152,9 @@ def write_summary(
         topic = record["Topic"]
         slug = slugify(str(topic))
         out_path = output_base / slug
-        lines.append(f"- [{topic}]({out_path}) - Score: {record['Overall Score']}/5")
+        lines.append(f"- [{topic}]({out_path})")
 
-    failed_records = [r for r in records if r["Overall Score"] == 0]
+    failed_records = [r for r in records if r["Reviewer Notes"]]
     if failed_records:
         lines.extend(["", "## Failed Generations", ""])
         for r in failed_records:
@@ -162,6 +163,36 @@ def write_summary(
     lines.append("")
     path.write_text("\n".join(lines), encoding="utf-8")
     print(f"Summary report written to: {path}")
+
+
+def write_manifest(
+    run_id: str,
+    topic_count: int,
+    success_count: int,
+    failure_count: int,
+    duration_seconds: float,
+    path: Path,
+) -> None:
+    """Write a run manifest as JSON."""
+    manifest = {
+        "run_id": run_id,
+        "git_commit": get_git_commit(),
+        "prompt_version": _PROMPT_VERSION,
+        "topic_count": topic_count,
+        "success_count": success_count,
+        "failure_count": failure_count,
+        "duration_seconds": round(duration_seconds, 2),
+    }
+    path.write_text(
+        json.dumps(manifest, indent=2, ensure_ascii=False), encoding="utf-8",
+    )
+    print(f"Manifest written to: {path}")
+
+
+def write_topics_list(topics: List[str], path: Path) -> None:
+    """Write a plain-text list of topics."""
+    path.write_text("\n".join(topics) + "\n", encoding="utf-8")
+    print(f"Topics list written to: {path}")
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -183,10 +214,17 @@ def build_parser() -> argparse.ArgumentParser:
         ),
         help="Base output directory for content packages.",
     )
+    parser.add_argument(
+        "--run-dir",
+        type=str,
+        default=None,
+        help="Override run output directory (default: runs/<timestamp>/).",
+    )
     return parser
 
 
 def main(argv: list[str] | None = None) -> int:
+    start = time.time()
     parser = build_parser()
     args = parser.parse_args(argv)
 
@@ -196,16 +234,35 @@ def main(argv: list[str] | None = None) -> int:
     topics = load_topics(topics_path)
     print(f"Loaded {len(topics)} topics from: {topics_path}")
 
-    records = run_batch(topics, output_base)
+    records, failed = run_batch(topics, output_base)
     total = len(records)
-    failed = sum(1 for r in records if r["Overall Score"] == 0)
+    success = total - failed
 
-    csv_path = Path(__file__).resolve().parent / "evaluation.csv"
+    timestamp = datetime.now(tz=timezone.utc).strftime("%Y%m%d_%H%M%S")
+    run_id = f"run_{timestamp}"
+    tools_dir = Path(__file__).resolve().parent
+
+    if args.run_dir:
+        run_dir = Path(args.run_dir)
+    else:
+        run_dir = tools_dir / "runs" / timestamp
+
+    run_dir.mkdir(parents=True, exist_ok=True)
+
+    csv_path = run_dir / "evaluation.csv"
     write_csv(records, csv_path)
 
-    summary_path = Path(__file__).resolve().parent / "summary.md"
+    summary_path = run_dir / "summary.md"
     write_summary(records, total, failed, output_base, summary_path)
 
+    topics_list_path = run_dir / "generated_topics.txt"
+    write_topics_list(topics, topics_list_path)
+
+    elapsed = time.time() - start
+    manifest_path = run_dir / "manifest.json"
+    write_manifest(run_id, total, success, failed, elapsed, manifest_path)
+
+    print(f"\nAll run artifacts saved in: {run_dir}")
     return 0
 
 
