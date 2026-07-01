@@ -1,43 +1,27 @@
 from __future__ import annotations
 
-from typing import Dict, List, Type
+from typing import Dict, List
 
-from providers import Provider
-from providers.research import ResearchProvider
-from providers.script import ScriptProvider
-from providers.image_prompt import ImagePromptProvider
-from providers.video_prompt import VideoPromptProvider
-from providers.seo import SEOProvider
-from providers.publish import PublishProvider
+from providers.registry import ProviderRegistry
 
 
 class ContentEngine:
-    """Orchestrator that coordinates independent providers.
+    """Orchestrator that dispatches work to providers via a registry.
 
-    The engine does not own generation logic. It dispatches work to
-    providers and collects their outputs.
+    The engine does not know about concrete providers. All provider
+    resolution is delegated to the ProviderRegistry.
     """
 
     def __init__(
         self,
-        providers: Dict[str, Type[Provider]] | None = None,
+        registry: ProviderRegistry | None = None,
     ) -> None:
-        self._providers = providers or self._default_providers()
-
-    @staticmethod
-    def _default_providers() -> Dict[str, Type[Provider]]:
-        return {
-            "research": ResearchProvider,
-            "script": ScriptProvider,
-            "image_prompts": ImagePromptProvider,
-            "video_prompts": VideoPromptProvider,
-            "seo": SEOProvider,
-            "publish_checklist": PublishProvider,
-        }
+        self._registry = registry or ProviderRegistry()
 
     def run(self, idea: str) -> Dict[str, List[str]]:
         results: Dict[str, List[str]] = {}
-        for key, provider_cls in self._providers.items():
+        for name in self._registry.list():
+            provider_cls = self._registry.get(name)
             provider = provider_cls()
-            results[key] = provider.generate(idea)
+            results[name] = provider.generate(idea)
         return results
