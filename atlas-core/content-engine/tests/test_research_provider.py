@@ -7,6 +7,9 @@ from unittest.mock import MagicMock
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
+from generator import ContentPackageGenerator
+from pipeline import ContentPipeline
+
 from providers.research import ResearchProvider, _RESEARCH_PROMPT_TEMPLATE
 
 
@@ -44,10 +47,6 @@ class TestResearchProvider:
         provider = ResearchProvider(ai_provider=mock_ai)
         result = provider.generate("Test")
 
-        from generator import ContentPackageGenerator
-        from pipeline import ContentPipeline, PipelineResult
-
-        # Create a minimal PipelineResult with the AI research
         plan = ContentPipeline().run("Test")
         plan.research = result
 
@@ -55,7 +54,6 @@ class TestResearchProvider:
             generator = ContentPackageGenerator(tmpdir)
             files = generator.generate(plan)
             content = Path(files["research"]).read_text(encoding="utf-8")
-            # Raw markdown should be written directly (starts with #)
             assert content.startswith("# Historical Context")
             assert "Content here." in content
             assert "Fact one" in content

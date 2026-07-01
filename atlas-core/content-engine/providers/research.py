@@ -1,13 +1,20 @@
 from __future__ import annotations
 
 import os
-from typing import List, Optional
+import sys
+from pathlib import Path
+from typing import List
+
+from .base import Provider
+
+# Ensure atlas-core is on sys.path so the ai module can be imported
+_core_path = str(Path(__file__).resolve().parents[2])
+if _core_path not in sys.path:
+    sys.path.insert(0, _core_path)
 
 from ai.base import AIProvider
 from ai.mock import MockProvider
 from ai.providers.openai_provider import OpenAIProvider
-
-from .base import Provider
 
 
 _RESEARCH_PROMPT_TEMPLATE = """You are a research assistant. Research the following topic and generate a structured markdown document.
