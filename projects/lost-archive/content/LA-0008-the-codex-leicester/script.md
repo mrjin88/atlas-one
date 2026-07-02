@@ -2,7 +2,7 @@
 
 - [Mock AI response for: You are a scriptwriter. Write a structured script for the following topic.
 
-Topic: Lost civilizations
+Topic: The Codex Leicester
 
 Include the following sections in your response:
 

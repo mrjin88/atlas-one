@@ -2,7 +2,7 @@
 
 - [Mock AI response for: You are a video content strategist. Generate video production prompts for the following topic.
 
-Topic: Lost civilizations
+Topic: Ancient Egyptian medicine
 
 Include the following sections in your response:
 

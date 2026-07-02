@@ -2,7 +2,7 @@
 
 - [Mock AI response for: You are a visual prompt engineer. Generate image generation prompts for the following topic.
 
-Topic: Lost civilizations
+Topic: Byzantine Empire
 
 Include the following sections in your response:
 

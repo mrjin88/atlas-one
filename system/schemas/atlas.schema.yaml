@@ -1,0 +1,66 @@
+# Atlas ONE Schema
+
+version: 1.0
+name: atlas_one_project_schema
+
+required_project_files:
+  - research.md
+  - script.md
+  - timeline.md
+  - shots.md
+  - shots.yaml
+  - review.md
+  - publish_checklist.md
+  - seo.json
+
+required_project_folders:
+  - assets/images
+  - assets/videos
+  - assets/voice
+  - assets/music
+  - assets/sfx
+  - assets/thumbnail
+  - exports/youtube
+  - exports/shorts
+  - exports/archive
+
+shot_schema:
+  required:
+    - id
+    - title
+    - timestamp
+    - duration_seconds
+    - asset_type
+    - narration_beat
+    - visual_objective
+    - camera
+    - image_prompt
+    - video_prompt
+    - negative_prompt
+  fields:
+    id: string
+    title: string
+    timestamp: string
+    duration_seconds: integer
+    asset_type: string
+    evidence_level: HIGH | MEDIUM | LOW | SPECULATION
+    narration_beat: string
+    visual_objective: string
+    camera:
+      lens: string
+      movement: string
+      lighting: string
+      environment: string
+    image_prompt: string
+    video_prompt: string
+    negative_prompt: string
+    output:
+      image_path: string
+      video_path: string
+      status: pending | approved | regenerate | rejected
+
+rules:
+  - One shot ID must remain stable across all production stages.
+  - shots.yaml is machine-readable source of truth.
+  - shots.md is human-readable source of truth.
+  - Deprecated prompt files must not be used by builders.
