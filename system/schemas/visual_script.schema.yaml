@@ -1,0 +1,32 @@
+version: 1.0
+
+visual_scene:
+  id: string
+  narration: string
+  story_function: HOOK|SETUP|EVIDENCE|REVEAL|REFLECTION|CTA
+  evidence_level: HIGH|MEDIUM|LOW|SPECULATION
+  emotion: string
+
+  visual:
+    type: REAL|ARCHIVE|AI|CGI|MACRO|SCIENTIFIC|DIAGRAM
+    primary_subject: string
+    supporting_subjects: [string]
+
+  camera:
+    framing: string
+    lens: string
+    movement: string
+    angle: string
+
+  lighting:
+    style: string
+
+  environment: string
+
+  requires:
+    ai_image: bool
+    image_to_video: bool
+    text_to_video: bool
+    archive: bool
+    cgi: bool
+    motion_graphics: bool

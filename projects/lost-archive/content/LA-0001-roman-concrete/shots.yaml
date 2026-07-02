@@ -1,0 +1,527 @@
+project_id: LA-0001
+slug: roman-concrete
+version: '1.0'
+shots:
+- id: RC-001
+  title: Ancient Harbor Dawn
+  timestamp: 00:00
+  duration_seconds: 8
+  asset_type: AI Image + Image-to-Video
+  evidence_level: HIGH
+  narration_beat: You think you know what progress looks like.
+  visual_objective: Open with ancient scale and mystery.
+  camera:
+    lens: 24mm wide
+    movement: slow drone push-in
+    lighting: amber sunrise
+    environment: ancient Mediterranean harbor
+  image_prompt: Ancient Roman harbor at sunrise on the Mediterranean coast, massive stone and concrete piers extending into
+    calm blue water, distant Roman ships, soft amber light, mist over the sea, realistic Roman engineering, cinematic drone
+    perspective, epic but grounded historical documentary look, photorealistic, ultra detailed, 16:9.
+  video_prompt: Ancient Roman harbor at sunrise, calm Mediterranean sea, monumental concrete piers, light mist, slow drone
+    push toward the harbor, subtle waves, cinematic documentary realism, 8 seconds, 24 fps, no text.
+  negative_prompt: text, watermark, logo, captions, fantasy ruins, cartoon style, plastic texture, exaggerated CGI, modern
+    construction helmets in ancient scenes, impossible architecture, low resolution, blurry image, deformed hands, extra fingers
+  output:
+    image_path: assets/images/RC-001.png
+    video_path: assets/videos/RC-001.mp4
+    status: pending
+- id: RC-002
+  title: Concrete Under the Sea
+  timestamp: 00:15
+  duration_seconds: 8
+  asset_type: AI Image + Image-to-Video
+  evidence_level: HIGH
+  narration_beat: Concrete blocks sit on the ocean floor.
+  visual_objective: Reveal the impossible survival of submerged concrete.
+  camera:
+    lens: 28mm
+    movement: slow underwater tracking
+    lighting: filtered sunlight underwater
+    environment: Mediterranean seafloor
+  image_prompt: Underwater view of ancient Roman concrete blocks resting on the Mediterranean seafloor, covered with subtle
+    marine growth, clear blue water, sunlight rays filtering from above, archaeological atmosphere, realistic texture of aged
+    concrete and stone, quiet mysterious mood, photorealistic underwater documentary still, 16:9.
+  video_prompt: Underwater tracking shot through ancient Roman concrete blocks resting on the seafloor, sun rays penetrating
+    clear blue water, fish passing naturally, archaeological realism, 8 seconds, 24 fps, no text.
+  negative_prompt: text, watermark, logo, captions, fantasy ruins, cartoon style, plastic texture, exaggerated CGI, modern
+    construction helmets in ancient scenes, impossible architecture, low resolution, blurry image, deformed hands, extra fingers
+  output:
+    image_path: assets/images/RC-002.png
+    video_path: assets/videos/RC-002.mp4
+    status: pending
+- id: RC-003
+  title: Self-Healing Micro Crack
+  timestamp: 00:30
+  duration_seconds: 8
+  asset_type: AI Image + Image-to-Video
+  evidence_level: HIGH
+  narration_beat: They are getting stronger.
+  visual_objective: Introduce the wonder visually.
+  camera:
+    lens: macro
+    movement: macro push-in
+    lighting: controlled scientific light
+    environment: microscopic concrete interior
+  image_prompt: Extreme macro cross-section of ancient Roman concrete, tiny crack filled with newly formed mineral crystals,
+    Al-tobermorite-like needle crystals under scientific lighting, realistic mineral texture, cinematic macro photography,
+    shallow depth of field, high detail, no labels, 16:9.
+  video_prompt: Extreme macro cinematic visualization inside Roman concrete, microscopic crack gradually filled by growing
+    mineral crystals, realistic scientific animation, shallow depth of field, 8 seconds, 24 fps, no text.
+  negative_prompt: text, watermark, logo, captions, fantasy ruins, cartoon style, plastic texture, exaggerated CGI, modern
+    construction helmets in ancient scenes, impossible architecture, low resolution, blurry image, deformed hands, extra fingers
+  output:
+    image_path: assets/images/RC-003.png
+    video_path: assets/videos/RC-003.mp4
+    status: pending
+- id: RC-004
+  title: Pantheon Exterior
+  timestamp: 00:50
+  duration_seconds: 8
+  asset_type: AI Image + Image-to-Video
+  evidence_level: HIGH
+  narration_beat: The year is 128 AD.
+  visual_objective: Establish the Pantheon.
+  camera:
+    lens: 35mm
+    movement: slow upward gimbal reveal
+    lighting: warm morning
+    environment: Rome
+  image_prompt: The Pantheon in Rome viewed from a low cinematic angle, early morning light, massive ancient columns and weathered
+    stone facade, quiet piazza, realistic historical atmosphere, architectural documentary photography, photorealistic, high
+    detail, 16:9.
+  video_prompt: Slow upward gimbal move revealing the Pantheon façade under warm morning light, tourists absent, timeless
+    atmosphere, 8 seconds, 24 fps, no text.
+  negative_prompt: text, watermark, logo, captions, fantasy ruins, cartoon style, plastic texture, exaggerated CGI, modern
+    construction helmets in ancient scenes, impossible architecture, low resolution, blurry image, deformed hands, extra fingers
+  output:
+    image_path: assets/images/RC-004.png
+    video_path: assets/videos/RC-004.mp4
+    status: pending
+- id: RC-005
+  title: Pantheon Oculus Interior
+  timestamp: 01:05
+  duration_seconds: 8
+  asset_type: AI Image + Image-to-Video
+  evidence_level: HIGH
+  narration_beat: The largest unreinforced concrete dome in the world.
+  visual_objective: Create awe.
+  camera:
+    lens: 20mm wide
+    movement: slow tilt upward
+    lighting: warm sunbeam
+    environment: Pantheon interior
+  image_prompt: Interior of the Pantheon looking upward toward the oculus, sunlight beam entering through the circular opening,
+    massive coffered concrete dome, warm atmospheric light, tourists removed, sacred quiet mood, realistic architectural photography,
+    photorealistic, ultra detailed, 16:9.
+  video_prompt: Interior of the Pantheon, slow tilt toward the oculus, sunlight beam illuminating the coffered concrete dome,
+    dust particles floating naturally, 8 seconds, 24 fps, no text.
+  negative_prompt: text, watermark, logo, captions, fantasy ruins, cartoon style, plastic texture, exaggerated CGI, modern
+    construction helmets in ancient scenes, impossible architecture, low resolution, blurry image, deformed hands, extra fingers
+  output:
+    image_path: assets/images/RC-005.png
+    video_path: assets/videos/RC-005.mp4
+    status: pending
+- id: RC-006
+  title: Roman Builders Mixing Concrete
+  timestamp: 01:35
+  duration_seconds: 8
+  asset_type: AI Image + Image-to-Video
+  evidence_level: HIGH
+  narration_beat: The Romans mixed volcanic ash with lime and aggregate.
+  visual_objective: Show empirical construction.
+  camera:
+    lens: 35mm
+    movement: gentle handheld
+    lighting: warm daylight
+    environment: Roman coastal site
+  image_prompt: Ancient Roman workers mixing volcanic ash, lime, and aggregate near a coastal construction site, wooden tools,
+    stone basins, simple linen tunics, realistic historical clothing, no fantasy armor, warm daylight, documentary realism,
+    cinematic composition, photorealistic, 16:9.
+  video_prompt: Roman builders mixing volcanic ash, lime and aggregate beside a coastal construction site, realistic tools,
+    gentle handheld documentary movement, 8 seconds, 24 fps, no text.
+  negative_prompt: text, watermark, logo, captions, fantasy ruins, cartoon style, plastic texture, exaggerated CGI, modern
+    construction helmets in ancient scenes, impossible architecture, low resolution, blurry image, deformed hands, extra fingers
+  output:
+    image_path: assets/images/RC-006.png
+    video_path: assets/videos/RC-006.mp4
+    status: pending
+- id: RC-007
+  title: Pozzolana Volcanic Ash
+  timestamp: 00:00
+  duration_seconds: 8
+  asset_type: AI Image + Image-to-Video
+  evidence_level: HIGH
+  narration_beat: Pozzolana Volcanic Ash
+  visual_objective: Production visual for Pozzolana Volcanic Ash.
+  camera:
+    lens: 35mm
+    movement: slow controlled movement
+    lighting: natural cinematic light
+    environment: documentary environment
+  image_prompt: Pozzolana Volcanic Ash, cinematic historical documentary style, photorealistic, 16:9, no text.
+  video_prompt: Pozzolana Volcanic Ash, slow controlled cinematic documentary motion, 8 seconds, 24 fps, no text.
+  negative_prompt: text, watermark, logo, captions, fantasy ruins, cartoon style, plastic texture, exaggerated CGI, modern
+    construction helmets in ancient scenes, impossible architecture, low resolution, blurry image, deformed hands, extra fingers
+  output:
+    image_path: assets/images/RC-007.png
+    video_path: assets/videos/RC-007.mp4
+    status: pending
+- id: RC-008
+  title: Modern Concrete Failure
+  timestamp: 00:00
+  duration_seconds: 8
+  asset_type: AI Image + Image-to-Video
+  evidence_level: HIGH
+  narration_beat: Modern Concrete Failure
+  visual_objective: Production visual for Modern Concrete Failure.
+  camera:
+    lens: 35mm
+    movement: slow controlled movement
+    lighting: natural cinematic light
+    environment: documentary environment
+  image_prompt: Modern Concrete Failure, cinematic historical documentary style, photorealistic, 16:9, no text.
+  video_prompt: Modern Concrete Failure, slow controlled cinematic documentary motion, 8 seconds, 24 fps, no text.
+  negative_prompt: text, watermark, logo, captions, fantasy ruins, cartoon style, plastic texture, exaggerated CGI, modern
+    construction helmets in ancient scenes, impossible architecture, low resolution, blurry image, deformed hands, extra fingers
+  output:
+    image_path: assets/images/RC-008.png
+    video_path: assets/videos/RC-008.mp4
+    status: pending
+- id: RC-009
+  title: Caesarea Underwater Ruins
+  timestamp: 00:00
+  duration_seconds: 8
+  asset_type: AI Image + Image-to-Video
+  evidence_level: HIGH
+  narration_beat: Caesarea Underwater Ruins
+  visual_objective: Production visual for Caesarea Underwater Ruins.
+  camera:
+    lens: 35mm
+    movement: slow controlled movement
+    lighting: natural cinematic light
+    environment: documentary environment
+  image_prompt: Caesarea Underwater Ruins, cinematic historical documentary style, photorealistic, 16:9, no text.
+  video_prompt: Caesarea Underwater Ruins, slow controlled cinematic documentary motion, 8 seconds, 24 fps, no text.
+  negative_prompt: text, watermark, logo, captions, fantasy ruins, cartoon style, plastic texture, exaggerated CGI, modern
+    construction helmets in ancient scenes, impossible architecture, low resolution, blurry image, deformed hands, extra fingers
+  output:
+    image_path: assets/images/RC-009.png
+    video_path: assets/videos/RC-009.mp4
+    status: pending
+- id: RC-010
+  title: Laboratory Concrete Sample
+  timestamp: 00:00
+  duration_seconds: 8
+  asset_type: AI Image + Image-to-Video
+  evidence_level: HIGH
+  narration_beat: Laboratory Concrete Sample
+  visual_objective: Production visual for Laboratory Concrete Sample.
+  camera:
+    lens: 35mm
+    movement: slow controlled movement
+    lighting: natural cinematic light
+    environment: documentary environment
+  image_prompt: Laboratory Concrete Sample, cinematic historical documentary style, photorealistic, 16:9, no text.
+  video_prompt: Laboratory Concrete Sample, slow controlled cinematic documentary motion, 8 seconds, 24 fps, no text.
+  negative_prompt: text, watermark, logo, captions, fantasy ruins, cartoon style, plastic texture, exaggerated CGI, modern
+    construction helmets in ancient scenes, impossible architecture, low resolution, blurry image, deformed hands, extra fingers
+  output:
+    image_path: assets/images/RC-010.png
+    video_path: assets/videos/RC-010.mp4
+    status: pending
+- id: RC-011
+  title: Microscopy Mineral Surface
+  timestamp: 00:00
+  duration_seconds: 8
+  asset_type: AI Image + Image-to-Video
+  evidence_level: HIGH
+  narration_beat: Microscopy Mineral Surface
+  visual_objective: Production visual for Microscopy Mineral Surface.
+  camera:
+    lens: 35mm
+    movement: slow controlled movement
+    lighting: natural cinematic light
+    environment: documentary environment
+  image_prompt: Microscopy Mineral Surface, cinematic historical documentary style, photorealistic, 16:9, no text.
+  video_prompt: Microscopy Mineral Surface, slow controlled cinematic documentary motion, 8 seconds, 24 fps, no text.
+  negative_prompt: text, watermark, logo, captions, fantasy ruins, cartoon style, plastic texture, exaggerated CGI, modern
+    construction helmets in ancient scenes, impossible architecture, low resolution, blurry image, deformed hands, extra fingers
+  output:
+    image_path: assets/images/RC-011.png
+    video_path: assets/videos/RC-011.mp4
+    status: pending
+- id: RC-012
+  title: Crystal Growth in Pores
+  timestamp: 00:00
+  duration_seconds: 8
+  asset_type: AI Image + Image-to-Video
+  evidence_level: HIGH
+  narration_beat: Crystal Growth in Pores
+  visual_objective: Production visual for Crystal Growth in Pores.
+  camera:
+    lens: 35mm
+    movement: slow controlled movement
+    lighting: natural cinematic light
+    environment: documentary environment
+  image_prompt: Crystal Growth in Pores, cinematic historical documentary style, photorealistic, 16:9, no text.
+  video_prompt: Crystal Growth in Pores, slow controlled cinematic documentary motion, 8 seconds, 24 fps, no text.
+  negative_prompt: text, watermark, logo, captions, fantasy ruins, cartoon style, plastic texture, exaggerated CGI, modern
+    construction helmets in ancient scenes, impossible architecture, low resolution, blurry image, deformed hands, extra fingers
+  output:
+    image_path: assets/images/RC-012.png
+    video_path: assets/videos/RC-012.mp4
+    status: pending
+- id: RC-013
+  title: Roman Concrete Cross Section
+  timestamp: 00:00
+  duration_seconds: 8
+  asset_type: AI Image + Image-to-Video
+  evidence_level: HIGH
+  narration_beat: Roman Concrete Cross Section
+  visual_objective: Production visual for Roman Concrete Cross Section.
+  camera:
+    lens: 35mm
+    movement: slow controlled movement
+    lighting: natural cinematic light
+    environment: documentary environment
+  image_prompt: Roman Concrete Cross Section, cinematic historical documentary style, photorealistic, 16:9, no text.
+  video_prompt: Roman Concrete Cross Section, slow controlled cinematic documentary motion, 8 seconds, 24 fps, no text.
+  negative_prompt: text, watermark, logo, captions, fantasy ruins, cartoon style, plastic texture, exaggerated CGI, modern
+    construction helmets in ancient scenes, impossible architecture, low resolution, blurry image, deformed hands, extra fingers
+  output:
+    image_path: assets/images/RC-013.png
+    video_path: assets/videos/RC-013.mp4
+    status: pending
+- id: RC-014
+  title: Roman Harbor Construction
+  timestamp: 00:00
+  duration_seconds: 8
+  asset_type: AI Image + Image-to-Video
+  evidence_level: HIGH
+  narration_beat: Roman Harbor Construction
+  visual_objective: Production visual for Roman Harbor Construction.
+  camera:
+    lens: 35mm
+    movement: slow controlled movement
+    lighting: natural cinematic light
+    environment: documentary environment
+  image_prompt: Roman Harbor Construction, cinematic historical documentary style, photorealistic, 16:9, no text.
+  video_prompt: Roman Harbor Construction, slow controlled cinematic documentary motion, 8 seconds, 24 fps, no text.
+  negative_prompt: text, watermark, logo, captions, fantasy ruins, cartoon style, plastic texture, exaggerated CGI, modern
+    construction helmets in ancient scenes, impossible architecture, low resolution, blurry image, deformed hands, extra fingers
+  output:
+    image_path: assets/images/RC-014.png
+    video_path: assets/videos/RC-014.mp4
+    status: pending
+- id: RC-015
+  title: Formula Variation
+  timestamp: 00:00
+  duration_seconds: 8
+  asset_type: AI Image + Image-to-Video
+  evidence_level: HIGH
+  narration_beat: Formula Variation
+  visual_objective: Production visual for Formula Variation.
+  camera:
+    lens: 35mm
+    movement: slow controlled movement
+    lighting: natural cinematic light
+    environment: documentary environment
+  image_prompt: Formula Variation, cinematic historical documentary style, photorealistic, 16:9, no text.
+  video_prompt: Formula Variation, slow controlled cinematic documentary motion, 8 seconds, 24 fps, no text.
+  negative_prompt: text, watermark, logo, captions, fantasy ruins, cartoon style, plastic texture, exaggerated CGI, modern
+    construction helmets in ancient scenes, impossible architecture, low resolution, blurry image, deformed hands, extra fingers
+  output:
+    image_path: assets/images/RC-015.png
+    video_path: assets/videos/RC-015.mp4
+    status: pending
+- id: RC-016
+  title: Cement Factory Emissions
+  timestamp: 00:00
+  duration_seconds: 8
+  asset_type: AI Image + Image-to-Video
+  evidence_level: HIGH
+  narration_beat: Cement Factory Emissions
+  visual_objective: Production visual for Cement Factory Emissions.
+  camera:
+    lens: 35mm
+    movement: slow controlled movement
+    lighting: natural cinematic light
+    environment: documentary environment
+  image_prompt: Cement Factory Emissions, cinematic historical documentary style, photorealistic, 16:9, no text.
+  video_prompt: Cement Factory Emissions, slow controlled cinematic documentary motion, 8 seconds, 24 fps, no text.
+  negative_prompt: text, watermark, logo, captions, fantasy ruins, cartoon style, plastic texture, exaggerated CGI, modern
+    construction helmets in ancient scenes, impossible architecture, low resolution, blurry image, deformed hands, extra fingers
+  output:
+    image_path: assets/images/RC-016.png
+    video_path: assets/videos/RC-016.mp4
+    status: pending
+- id: RC-017
+  title: Low Carbon Future
+  timestamp: 00:00
+  duration_seconds: 8
+  asset_type: AI Image + Image-to-Video
+  evidence_level: HIGH
+  narration_beat: Low Carbon Future
+  visual_objective: Production visual for Low Carbon Future.
+  camera:
+    lens: 35mm
+    movement: slow controlled movement
+    lighting: natural cinematic light
+    environment: documentary environment
+  image_prompt: Low Carbon Future, cinematic historical documentary style, photorealistic, 16:9, no text.
+  video_prompt: Low Carbon Future, slow controlled cinematic documentary motion, 8 seconds, 24 fps, no text.
+  negative_prompt: text, watermark, logo, captions, fantasy ruins, cartoon style, plastic texture, exaggerated CGI, modern
+    construction helmets in ancient scenes, impossible architecture, low resolution, blurry image, deformed hands, extra fingers
+  output:
+    image_path: assets/images/RC-017.png
+    video_path: assets/videos/RC-017.mp4
+    status: pending
+- id: RC-018
+  title: MIT Hot Mixing Recreation
+  timestamp: 00:00
+  duration_seconds: 8
+  asset_type: AI Image + Image-to-Video
+  evidence_level: MEDIUM
+  narration_beat: MIT Hot Mixing Recreation
+  visual_objective: Production visual for MIT Hot Mixing Recreation.
+  camera:
+    lens: 35mm
+    movement: slow controlled movement
+    lighting: natural cinematic light
+    environment: documentary environment
+  image_prompt: MIT Hot Mixing Recreation, cinematic historical documentary style, photorealistic, 16:9, no text.
+  video_prompt: MIT Hot Mixing Recreation, slow controlled cinematic documentary motion, 8 seconds, 24 fps, no text.
+  negative_prompt: text, watermark, logo, captions, fantasy ruins, cartoon style, plastic texture, exaggerated CGI, modern
+    construction helmets in ancient scenes, impossible architecture, low resolution, blurry image, deformed hands, extra fingers
+  output:
+    image_path: assets/images/RC-018.png
+    video_path: assets/videos/RC-018.mp4
+    status: pending
+- id: RC-019
+  title: Lime Clasts Macro
+  timestamp: 00:00
+  duration_seconds: 8
+  asset_type: AI Image + Image-to-Video
+  evidence_level: MEDIUM
+  narration_beat: Lime Clasts Macro
+  visual_objective: Production visual for Lime Clasts Macro.
+  camera:
+    lens: 35mm
+    movement: slow controlled movement
+    lighting: natural cinematic light
+    environment: documentary environment
+  image_prompt: Lime Clasts Macro, cinematic historical documentary style, photorealistic, 16:9, no text.
+  video_prompt: Lime Clasts Macro, slow controlled cinematic documentary motion, 8 seconds, 24 fps, no text.
+  negative_prompt: text, watermark, logo, captions, fantasy ruins, cartoon style, plastic texture, exaggerated CGI, modern
+    construction helmets in ancient scenes, impossible architecture, low resolution, blurry image, deformed hands, extra fingers
+  output:
+    image_path: assets/images/RC-019.png
+    video_path: assets/videos/RC-019.mp4
+    status: pending
+- id: RC-020
+  title: Pantheon Dome Layers
+  timestamp: 00:00
+  duration_seconds: 8
+  asset_type: AI Image + Image-to-Video
+  evidence_level: HIGH
+  narration_beat: Pantheon Dome Layers
+  visual_objective: Production visual for Pantheon Dome Layers.
+  camera:
+    lens: 35mm
+    movement: slow controlled movement
+    lighting: natural cinematic light
+    environment: documentary environment
+  image_prompt: Pantheon Dome Layers, cinematic historical documentary style, photorealistic, 16:9, no text.
+  video_prompt: Pantheon Dome Layers, slow controlled cinematic documentary motion, 8 seconds, 24 fps, no text.
+  negative_prompt: text, watermark, logo, captions, fantasy ruins, cartoon style, plastic texture, exaggerated CGI, modern
+    construction helmets in ancient scenes, impossible architecture, low resolution, blurry image, deformed hands, extra fingers
+  output:
+    image_path: assets/images/RC-020.png
+    video_path: assets/videos/RC-020.mp4
+    status: pending
+- id: RC-021
+  title: Mediterranean Harbor Network
+  timestamp: 00:00
+  duration_seconds: 8
+  asset_type: AI Image + Image-to-Video
+  evidence_level: HIGH
+  narration_beat: Mediterranean Harbor Network
+  visual_objective: Production visual for Mediterranean Harbor Network.
+  camera:
+    lens: 35mm
+    movement: slow controlled movement
+    lighting: natural cinematic light
+    environment: documentary environment
+  image_prompt: Mediterranean Harbor Network, cinematic historical documentary style, photorealistic, 16:9, no text.
+  video_prompt: Mediterranean Harbor Network, slow controlled cinematic documentary motion, 8 seconds, 24 fps, no text.
+  negative_prompt: text, watermark, logo, captions, fantasy ruins, cartoon style, plastic texture, exaggerated CGI, modern
+    construction helmets in ancient scenes, impossible architecture, low resolution, blurry image, deformed hands, extra fingers
+  output:
+    image_path: assets/images/RC-021.png
+    video_path: assets/videos/RC-021.mp4
+    status: pending
+- id: RC-022
+  title: Old vs Modern Concrete Contrast
+  timestamp: 00:00
+  duration_seconds: 8
+  asset_type: AI Image + Image-to-Video
+  evidence_level: HIGH
+  narration_beat: Old vs Modern Concrete Contrast
+  visual_objective: Production visual for Old vs Modern Concrete Contrast.
+  camera:
+    lens: 35mm
+    movement: slow controlled movement
+    lighting: natural cinematic light
+    environment: documentary environment
+  image_prompt: Old vs Modern Concrete Contrast, cinematic historical documentary style, photorealistic, 16:9, no text.
+  video_prompt: Old vs Modern Concrete Contrast, slow controlled cinematic documentary motion, 8 seconds, 24 fps, no text.
+  negative_prompt: text, watermark, logo, captions, fantasy ruins, cartoon style, plastic texture, exaggerated CGI, modern
+    construction helmets in ancient scenes, impossible architecture, low resolution, blurry image, deformed hands, extra fingers
+  output:
+    image_path: assets/images/RC-022.png
+    video_path: assets/videos/RC-022.mp4
+    status: pending
+- id: RC-023
+  title: Pantheon Final Reflection
+  timestamp: 00:00
+  duration_seconds: 8
+  asset_type: AI Image + Image-to-Video
+  evidence_level: HIGH
+  narration_beat: Pantheon Final Reflection
+  visual_objective: Production visual for Pantheon Final Reflection.
+  camera:
+    lens: 35mm
+    movement: slow controlled movement
+    lighting: natural cinematic light
+    environment: documentary environment
+  image_prompt: Pantheon Final Reflection, cinematic historical documentary style, photorealistic, 16:9, no text.
+  video_prompt: Pantheon Final Reflection, slow controlled cinematic documentary motion, 8 seconds, 24 fps, no text.
+  negative_prompt: text, watermark, logo, captions, fantasy ruins, cartoon style, plastic texture, exaggerated CGI, modern
+    construction helmets in ancient scenes, impossible architecture, low resolution, blurry image, deformed hands, extra fingers
+  output:
+    image_path: assets/images/RC-023.png
+    video_path: assets/videos/RC-023.mp4
+    status: pending
+- id: RC-024
+  title: Future Learning From Ancient Material
+  timestamp: 00:00
+  duration_seconds: 8
+  asset_type: AI Image + Image-to-Video
+  evidence_level: HIGH
+  narration_beat: Future Learning From Ancient Material
+  visual_objective: Production visual for Future Learning From Ancient Material.
+  camera:
+    lens: 35mm
+    movement: slow controlled movement
+    lighting: natural cinematic light
+    environment: documentary environment
+  image_prompt: Future Learning From Ancient Material, cinematic historical documentary style, photorealistic, 16:9, no text.
+  video_prompt: Future Learning From Ancient Material, slow controlled cinematic documentary motion, 8 seconds, 24 fps, no
+    text.
+  negative_prompt: text, watermark, logo, captions, fantasy ruins, cartoon style, plastic texture, exaggerated CGI, modern
+    construction helmets in ancient scenes, impossible architecture, low resolution, blurry image, deformed hands, extra fingers
+  output:
+    image_path: assets/images/RC-024.png
+    video_path: assets/videos/RC-024.mp4
+    status: pending

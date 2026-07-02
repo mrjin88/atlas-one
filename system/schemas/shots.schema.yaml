@@ -1,0 +1,68 @@
+# Atlas ONE — shots.schema.yaml v1.0
+
+version: 1.0
+
+project:
+  id: string
+  slug: string
+  title: string
+  status: draft|production|published
+
+defaults:
+  aspect_ratio: "16:9"
+  fps: 24
+  clip_duration_seconds: 8
+  negative_prompt: string
+
+shots:
+  - id: string                 # Immutable (RC-001...)
+    title: string
+    sequence: integer
+
+    timing:
+      timestamp: "MM:SS"
+      duration_seconds: integer
+
+    narration:
+      text: string
+      beat: string
+
+    story:
+      purpose: string
+      evidence_level: HIGH|MEDIUM|LOW|SPECULATION
+
+    visual:
+      asset_type: AI_IMAGE|IMAGE_TO_VIDEO|TEXT_TO_VIDEO|ARCHIVE|CGI
+      environment: string
+      focal_subject: string
+      foreground: string
+      background: string
+
+    camera:
+      framing: string
+      lens: string
+      angle: string
+      movement: string
+      speed: string
+
+    lighting:
+      time_of_day: string
+      mood: string
+
+    prompts:
+      image: string
+      video: string
+      negative: string
+
+    outputs:
+      image: assets/images/<shot>.png
+      video: assets/videos/<shot>.mp4
+      status: pending|generated|approved|rejected
+
+validation_rules:
+  - id must be unique
+  - sequence must be unique
+  - duration_seconds > 0
+  - prompts.image required
+  - prompts.video required
+  - outputs are builder-managed
